@@ -2,11 +2,14 @@ FROM node:18
 
 WORKDIR /usr/src/app
 
-COPY package*.json ./
+COPY deliveries/package*.json ./
 
 RUN npm install
 
-COPY . .
+
+RUN npm install mysql cookie-parser body-parser express-session session-file-store method-override jsonwebtoken express ejs
+
+COPY deliveries/. .
 
 EXPOSE 3002
 
