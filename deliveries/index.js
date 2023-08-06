@@ -4,6 +4,7 @@ const methodOverride = require("method-override");
 const db = require('./models');
 const deliveryRouter = require('./routes/deliveries');
 const fs = require('fs');
+const morgan = require('morgan');
 
 const app = express();
 const port = 3002;
