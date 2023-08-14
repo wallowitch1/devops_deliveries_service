@@ -4,12 +4,16 @@ const methodOverride = require("method-override");
 const db = require('./models');
 const deliveryRouter = require('./routes/deliveries');
 const fs = require('fs');
-const morgan = require('morgan');
+
 const path = require('path');
 
 const app = express();
 const port = 3002;
-
+// cache 테스트
+// cache 테스트
+// cache 테스트
+// cache 테스트
+const morgan = require('morgan');
 // 로그 파일 스트림 생성
 const accessLogStream = fs.createWriteStream(path.join('/var/log/app/access.log'), { flags: 'a' });
 
@@ -19,7 +23,8 @@ morgan.token('client-ip', function(req, res) {
 });
 
 // morgan을 사용하여 액세스 로그 설정 (새로운 client-ip 토큰 포함)
-app.use(morgan(':client-ip - :remote-user :method :url HTTP/:http-version :status :res[content-length] :response-time ms ":referrer" ":user-agent"', { stream: accessLogStream }));
+app.use(morgan(':client-ip - :remote-user :method :url HTTP/:http-version :status :res[content-length] \
+:response-time ms ":referrer" ":user-agent"', { stream: accessLogStream }));
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
